@@ -13,7 +13,7 @@ public class RectangleTest {
         double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(24.75, receivedArea);
+        assertEquals(expectedArea, receivedArea);
     }
 
     @Test
