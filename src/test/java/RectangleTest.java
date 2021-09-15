@@ -28,4 +28,18 @@ public class RectangleTest {
         // Assert
         assertEquals(expectedArea, receivedArea);
     }
+
+    @Test
+    void areaShouldReturnZeroForNegativeHeight() {
+        // Arrange
+        double expectedArea = 0;
+        Rectangle rectangle = new Rectangle(4.5, -5.5);
+
+        // Act
+        double receivedArea = rectangle.area();
+
+        // Assert
+        assertEquals(expectedArea, receivedArea);
+    }
+
 }
