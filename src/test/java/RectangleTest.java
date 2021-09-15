@@ -70,7 +70,17 @@ public class RectangleTest {
     }
 
     @Test
-    void constructorShouldThrowRectangleArgumentExceptionForZeroWidthAndHeight() throws RectangleArgumentException {
+    void constructorShouldThrowRectangleArgumentExceptionForZeroWidthAndHeight() {
+        // Arrange
+
+        // Act
+
+        // Assert
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(0, 0));
+    }
+
+    @Test
+    void areaShouldThrowRectangleAreaUpperLimitExceptionIfAreaOverflowsTheDoubleLimit() throws RectangleArgumentException {
         // Arrange
         var width = Double.MAX_VALUE - 10;
         var height = Double.MAX_VALUE - 20;
@@ -81,7 +91,6 @@ public class RectangleTest {
 
         // Assert
         assertThrows(RectangleAreaUpperLimitException.class, rectangle::area);
-
     }
 
     @Test
@@ -96,4 +105,5 @@ public class RectangleTest {
         //Assert
         assertEquals(expectedPerimeter, perimeterReturned);
     }
+
 }
