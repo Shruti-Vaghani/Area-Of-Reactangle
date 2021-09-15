@@ -83,4 +83,17 @@ public class RectangleTest {
         assertThrows(RectangleAreaUpperLimitException.class, rectangle::area);
 
     }
+
+    @Test
+    void perimeterShouldReturnCorrectPerimeterForValidInput() throws RectangleArgumentException {
+        // Arrange
+        var rectangle = new Rectangle(4.25, 5);
+        var expectedPerimeter = 18.5;
+
+        // Act
+        var perimeterReturned = rectangle.perimeter();
+
+        //Assert
+        assertEquals(expectedPerimeter, perimeterReturned);
+    }
 }

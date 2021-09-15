@@ -25,4 +25,8 @@ public class Rectangle {
     private boolean isAreaOverFlowing(){
         return (width > 0) && (Double.MAX_VALUE / width < height);
     }
+
+    public double perimeter() {
+        return 2 * (width + height);
+    }
 }
