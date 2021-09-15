@@ -1,5 +1,6 @@
 import exceptions.rectangle.RectangleAreaUpperLimitException;
 import exceptions.rectangle.RectangleArgumentException;
+import exceptions.rectangle.RectanglePerimeterUpperLimitException;
 
 public class Rectangle {
     private final double width;
@@ -22,11 +23,20 @@ public class Rectangle {
         return width * height;
     }
 
-    private boolean isAreaOverFlowing(){
-        return (width > 0) && (Double.MAX_VALUE / width < height);
+
+    public double perimeter() throws RectanglePerimeterUpperLimitException {
+        if(isPerimeterOverFlowing()){
+            throw new RectanglePerimeterUpperLimitException("Perimeter od rectangle overflow upper limit of double");
+
+        }
+        return 2 * (width + height);
     }
 
-    public double perimeter() {
-        return 2 * (width + height);
+    private boolean isPerimeterOverFlowing(){
+        return (width >= (Double.MAX_VALUE/2) - height);
+    }
+
+    private boolean isAreaOverFlowing(){
+        return (width > 0) && (Double.MAX_VALUE / width < height);
     }
 }

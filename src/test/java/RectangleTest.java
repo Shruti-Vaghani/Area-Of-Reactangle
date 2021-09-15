@@ -1,5 +1,6 @@
 import exceptions.rectangle.RectangleAreaUpperLimitException;
 import exceptions.rectangle.RectangleArgumentException;
+import exceptions.rectangle.RectanglePerimeterUpperLimitException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -94,7 +95,7 @@ public class RectangleTest {
     }
 
     @Test
-    void perimeterShouldReturnCorrectPerimeterForValidInput() throws RectangleArgumentException {
+    void perimeterShouldReturnCorrectPerimeterForValidInput() throws RectangleArgumentException, RectanglePerimeterUpperLimitException {
         // Arrange
         var rectangle = new Rectangle(4.25, 5);
         var expectedPerimeter = 18.5;
@@ -106,4 +107,16 @@ public class RectangleTest {
         assertEquals(expectedPerimeter, perimeterReturned);
     }
 
+    @Test
+    void perimeterShouldThrowRectanglePerimeterUpperLimitException() throws RectangleArgumentException {
+        // Arrange
+        var width = Double.MAX_VALUE;
+        var height = 2;
+        var rectangle = new Rectangle(width, height);
+
+        // Act
+
+        // Assert
+        assertThrows(RectanglePerimeterUpperLimitException.class, rectangle::perimeter);
+    }
 }
