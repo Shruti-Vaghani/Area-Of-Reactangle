@@ -81,4 +81,17 @@ public class RectangleTest {
         assertEquals(expectedArea, receivedArea);
     }
 
+    @Test
+    void areaShouldReturnZeroForZeroWidthAndHeight() {
+        // Arrange
+        double expectedArea = 0;
+        Rectangle rectangle = new Rectangle(0, 0);
+
+        // Act
+        double receivedArea = rectangle.area();
+
+        // Assert
+        assertEquals(expectedArea, receivedArea);
+    }
+
 }
