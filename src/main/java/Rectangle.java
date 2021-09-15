@@ -1,13 +1,16 @@
 public class Rectangle {
     private double width;
-    private double length;
+    private double height;
 
     public Rectangle(double width, double length) {
         this.width = width;
-        this.length = length;
+        this.height = length;
     }
 
     public double area(){
-        return width * length;
+        if(width > 0 && height >0) {
+            return width * height;
+        }
+        return 0;
     }
 }
