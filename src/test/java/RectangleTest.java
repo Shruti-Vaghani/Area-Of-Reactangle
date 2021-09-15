@@ -1,10 +1,12 @@
+import exceptions.rectangle.RectangleArgumentException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RectangleTest {
     @Test
-    void areaShouldReturnCorrectAreaForValidWidthAndHeight() {
+    void areaShouldReturnCorrectAreaForValidWidthAndHeight() throws RectangleArgumentException {
         // Arrange
         double expectedArea = 24.75;
         Rectangle rectangle = new Rectangle(4.5, 5.5);
@@ -17,81 +19,63 @@ public class RectangleTest {
     }
 
     @Test
-    void areaShouldReturnZeroForNegativeWidth() {
+    void constructorShouldThrowRectangleArgumentExceptionForNegativeWidth() {
         // Arrange
-        double expectedArea = 0;
-        Rectangle rectangle = new Rectangle(-4.5, 5.5);
 
         // Act
-        double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(expectedArea, receivedArea);
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(-4, 5));
     }
 
     @Test
-    void areaShouldReturnZeroForNegativeHeight() {
+    void constructorShouldThrowRectangleArgumentExceptionForNegativeHeight() {
         // Arrange
-        double expectedArea = 0;
-        Rectangle rectangle = new Rectangle(4.5, -5.5);
 
         // Act
-        double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(expectedArea, receivedArea);
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(4, -5));
     }
 
     @Test
-    void areaShouldReturnZeroForNegativeWidthAndHeight() {
+    void constructorShouldThrowRectangleArgumentExceptionForNegativeWidthAndHeight() {
         // Arrange
-        double expectedArea = 0;
-        Rectangle rectangle = new Rectangle(-4.5, -5.5);
 
         // Act
-        double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(expectedArea, receivedArea);
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(-4, -5));
     }
 
     @Test
-    void areaShouldReturnZeroForZeroWidth() {
+    void constructorShouldThrowRectangleArgumentExceptionForZeroWidth() {
         // Arrange
-        double expectedArea = 0;
-        Rectangle rectangle = new Rectangle(0, 5.5);
 
         // Act
-        double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(expectedArea, receivedArea);
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(0, 5));
     }
 
     @Test
-    void areaShouldReturnZeroForZeroHeight() {
+    void constructorShouldThrowRectangleArgumentExceptionForZeroHeight() {
         // Arrange
-        double expectedArea = 0;
-        Rectangle rectangle = new Rectangle(4.5, 0);
 
         // Act
-        double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(expectedArea, receivedArea);
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(4, 0));
     }
 
     @Test
-    void areaShouldReturnZeroForZeroWidthAndHeight() {
+    void constructorShouldThrowRectangleArgumentExceptionForZeroWidthAndHeight() {
         // Arrange
-        double expectedArea = 0;
-        Rectangle rectangle = new Rectangle(0, 0);
 
         // Act
-        double receivedArea = rectangle.area();
 
         // Assert
-        assertEquals(expectedArea, receivedArea);
+        assertThrows(RectangleArgumentException.class, () -> new Rectangle(0, 0));
     }
 
 }
