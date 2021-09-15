@@ -7,7 +7,9 @@ public class Rectangle {
         this.height = height;
     }
 
+    // Calculating area of rectangle
     public double area(){
+        // Validate width and height
         if(width > 0 && height >0) {
             return width * height;
         }
