@@ -1,3 +1,4 @@
+import exceptions.rectangle.RectangleAreaUpperLimitException;
 import exceptions.rectangle.RectangleArgumentException;
 
 public class Rectangle {
@@ -14,11 +15,14 @@ public class Rectangle {
     }
 
     // Calculating area of rectangle
-    public double area(){
-        // Validate width and height
-        if(width > 0 && height >0) {
-            return width * height;
+    public double area() throws RectangleAreaUpperLimitException {
+        if(isAreaOverFlowing()) {
+            throw new RectangleAreaUpperLimitException("Area of rectangle overflown upper limit of double");
         }
-        return 0;
+        return width * height;
+    }
+
+    private boolean isAreaOverFlowing(){
+        return (width > 0) && (Double.MAX_VALUE / width < height);
     }
 }
