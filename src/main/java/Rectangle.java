@@ -17,7 +17,7 @@ public class Rectangle {
 
     // Calculating area of rectangle
     public double area() throws RectangleAreaUpperLimitException {
-        if(isAreaOverFlowing()) {
+        if(willAreaOverflow()) {
             throw new RectangleAreaUpperLimitException("Area of rectangle overflown upper limit of double");
         }
         return width * height;
@@ -25,18 +25,18 @@ public class Rectangle {
 
 
     public double perimeter() throws RectanglePerimeterUpperLimitException {
-        if(isPerimeterOverFlowing()){
+        if(willPerimeterOverflow()){
             throw new RectanglePerimeterUpperLimitException("Perimeter od rectangle overflow upper limit of double");
 
         }
         return 2 * (width + height);
     }
 
-    private boolean isPerimeterOverFlowing(){
+    private boolean willPerimeterOverflow(){
         return (width >= (Double.MAX_VALUE/2) - height);
     }
 
-    private boolean isAreaOverFlowing(){
+    private boolean willAreaOverflow(){
         return (width > 0) && (Double.MAX_VALUE / width < height);
     }
 }
